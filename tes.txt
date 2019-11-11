@@ -1,0 +1,194 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable react-native/no-inline-styles */
+import React, {Component} from 'react';
+import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import {createSwitchNavigator, createAppContainer} from 'react-navigation';
+
+import {createStackNavigator} from 'react-navigation-stack';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+
+class App extends Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+export default App;
+
+class WelcomeScreen extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Button
+          title="Login"
+          onPress={() => this.props.navigation.navigate('Dashboard')}
+        />
+        <Button title="Sign Up" onPress={() => alert('button pressed')} />
+      </View>
+    );
+  }
+}
+
+class DashboardScreen extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text>DashboardScreen</Text>
+      </View>
+    );
+  }
+}
+
+class Feed extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Button
+          title="Go To Detail Screen"
+          onPress={() => this.props.navigation.navigate('Detail')}
+        />
+      </View>
+    );
+  }
+}
+
+class Settings extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text>Settings</Text>
+      </View>
+    );
+  }
+}
+
+class Profile extends Component {
+  render() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text>Profile</Text>
+      </View>
+    );
+  }
+}
+
+const Detail = props => (
+  <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <Text>Detail</Text>
+  </View>
+);
+
+const FeedStack = createStackNavigator(
+  {
+    Feed: {
+      screen: Feed,
+      navigationOptions: ({navigation}) => {
+        return {
+          headerTitle: 'Feed',
+          headerLeft: (
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+              <Icon name="menu" size={30} />
+            </TouchableOpacity>
+          ),
+        };
+      },
+    },
+    Detail: {
+      screen: Detail,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      gesturesEnabled: false,
+    },
+  },
+);
+
+const ProfileStack = createStackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: ({navigation}) => {
+      return {
+        headerTitle: 'Profile',
+        headerLeft: (
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <Icon name="menu" size={30} />
+          </TouchableOpacity>
+        ),
+      };
+    },
+  },
+});
+const SettingsStack = createStackNavigator({
+  Settings: {
+    screen: Settings,
+    navigationOptions: ({navigation}) => {
+      return {
+        headerTitle: 'Settings',
+        headerLeft: (
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <Icon name="menu" size={30} />
+          </TouchableOpacity>
+        ),
+      };
+    },
+  },
+});
+
+const DashboardTabNavigator = createBottomTabNavigator(
+  {
+    FeedStack,
+    ProfileStack,
+    SettingsStack,
+  },
+  {
+    navigationOptions: ({navigation}) => {
+      const {routeName} = navigation.state.routes[navigation.state.index];
+      return {
+        header: null,
+        headerTitle: routeName,
+      };
+    },
+  },
+);
+const DashboardStackNavigator = createStackNavigator(
+  {
+    DashboardTabNavigator: DashboardTabNavigator,
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        headerLeft: (
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <Icon name="menu" size={30} />
+          </TouchableOpacity>
+        ),
+      };
+    },
+  },
+);
+
+const AppDrawerNavigator = createDrawerNavigator({
+  Dashboard: {
+    screen: DashboardStackNavigator,
+  },
+});
+
+const AppSwitchNavigator = createSwitchNavigator({
+  Welcome: {screen: WelcomeScreen},
+  Dashboard: {screen: AppDrawerNavigator},
+});
+
+const AppContainer = createAppContainer(AppSwitchNavigator);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
