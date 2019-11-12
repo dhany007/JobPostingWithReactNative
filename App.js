@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 // import { StackNavigator, DrawerNavigator } from "react-navigation";
 import {createAppContainer} from 'react-navigation';
@@ -14,8 +14,11 @@ import Job from './src/screens/job';
 import Company from './src/screens/job';
 import Category from './src/screens/job';
 
+import Starter from './src/screens/starter';
+import PreLoginRegister from './src/screens/preLoginRegister';
+
 import Register from './src/screens/register';
-import Login from './src/screens/register';
+import Login from './src/screens/login';
 
 const Drawer = createDrawerNavigator(
   {
@@ -35,13 +38,15 @@ const Drawer = createDrawerNavigator(
 
 const AppNavigator = createStackNavigator(
   {
+    Starter: {screen: Starter},
+    PreLoginRegister: {screen: PreLoginRegister},
     Drawer: {screen: Drawer},
 
     Login: {screen: Login},
     Register: {screen: Register},
   },
   {
-    initialRouteName: 'Drawer',
+    initialRouteName: 'PreLoginRegister',
     headerMode: 'none',
   },
 );
@@ -49,3 +54,4 @@ const AppNavigator = createStackNavigator(
 const AppContainer = createAppContainer(AppNavigator);
 
 export default AppContainer;
+
