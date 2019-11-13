@@ -20,6 +20,10 @@ export default {
     color: '#adadad',
     marginBottom: 70,
   },
+  txtStarted: {
+    color: '#ffffff',
+    fontSize: 17,
+  },
   btnGo: {
     marginTop: deviceHeight / 3,
     alignSelf: 'center',
@@ -31,11 +35,15 @@ export default {
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-
     elevation: 6,
   },
   launchLogin: {
+    color: '#adadad',
     textAlign: 'center',
     marginTop: 20,
+  },
+  txtSignup: {
+    color: '#6FAF98',
+    fontWeight: 'bold',
   },
 };

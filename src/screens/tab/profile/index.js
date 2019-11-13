@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 
-class Job extends Component {
+export default class Profile extends Component {
   render() {
     return (
       <View>
-        <Text> Screen Job </Text>
+        <Text> Screen Profile </Text>
       </View>
     );
   }
 }
-
-export default Job;

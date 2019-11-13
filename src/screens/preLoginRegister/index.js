@@ -6,6 +6,7 @@ import {Container, Button} from 'native-base';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import styles from './style';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default class PreLoginRegister extends Component {
   constructor() {
@@ -63,28 +64,38 @@ export default class PreLoginRegister extends Component {
   }
   render() {
     return (
-      <Container>
-        <SafeAreaView style={styles.carouselPage}>
-          <Carousel
-            ref={ref => (this.carousel = ref)}
-            data={this.state.carouselItems}
-            sliderWidth={250}
-            itemWidth={250}
-            renderItem={this._renderItem}
-            onSnapToItem={index => this.setState({activeSlide: index})}
-          />
-          {this.pagination}
-        </SafeAreaView>
-        <View>
-          <Button style={styles.btnLogin} rounded block>
-            <Text style={styles.txtLogin}>Login</Text>
-          </Button>
-        </View>
-        <View>
-          <Button style={styles.btnRegister} rounded block>
-            <Text style={styles.txtRegister}>Create Account</Text>
-          </Button>
-        </View>
+      <Container style={{marginLeft: 25, marginRight: 25}}>
+        <ScrollView>
+          <SafeAreaView style={styles.carouselPage}>
+            <Carousel
+              ref={ref => (this.carousel = ref)}
+              data={this.state.carouselItems}
+              sliderWidth={250}
+              itemWidth={250}
+              renderItem={this._renderItem}
+              onSnapToItem={index => this.setState({activeSlide: index})}
+            />
+            {this.pagination}
+          </SafeAreaView>
+          <View>
+            <Button
+              style={styles.btnLogin}
+              onPress={() => this.props.navigation.navigate('Login')}
+              rounded
+              block>
+              <Text style={styles.txtLogin}>Log in</Text>
+            </Button>
+          </View>
+          <View>
+            <Button
+              style={styles.btnRegister}
+              onPress={() => this.props.navigation.navigate('Register')}
+              rounded
+              block>
+              <Text style={styles.txtRegister}>Create Account</Text>
+            </Button>
+          </View>
+        </ScrollView>
       </Container>
     );
   }

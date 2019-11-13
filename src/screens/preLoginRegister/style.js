@@ -2,8 +2,6 @@ export default {
   btnLogin: {
     alignSelf: 'center',
     backgroundColor: '#6FAF98',
-    marginRight: 70,
-    marginLeft: 70,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -11,15 +9,13 @@ export default {
     },
     shadowOpacity: 0.43,
     shadowRadius: 9.51,
-    elevation: 15,
+    elevation: 5,
   },
   btnRegister: {
     marginTop: 20,
     marginBottom: 50,
     alignSelf: 'center',
     backgroundColor: '#ffffff',
-    marginRight: 70,
-    marginLeft: 70,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -28,21 +24,24 @@ export default {
     shadowOpacity: 0.43,
     shadowRadius: 9.51,
 
-    elevation: 15,
+    elevation: 5,
   },
   txtLogin: {
     textAlign: 'center',
     color: '#ffffff',
+    fontSize: 17,
   },
   txtRegister: {
     textAlign: 'center',
     color: '#000000',
+    fontSize: 17,
   },
   carouselPage: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
+    marginTop: 50,
   },
   txtTit: {
     fontWeight: 'bold',
