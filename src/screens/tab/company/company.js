@@ -50,6 +50,9 @@ class Company extends Component {
         </Header>
         <ScrollView>
           <View style={{backgroundColor: '#ffffff'}}>
+            <Text style={{marginTop: 15, marginBottom: 10, marginLeft: 20}}>
+              Found {this.props.company.totalData} Companies
+            </Text>
             <View style={styles.card}>
               {this.props.company.data.map((v, i) => (
                 <TouchableOpacity

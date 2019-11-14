@@ -8,10 +8,3 @@ export const getCompany = () => {
     payload: axios.get(IP),
   };
 };
-
-export const getOneCompany = id_company => {
-  return {
-    type: 'GET_COMPANY',
-    payload: axios.get(`${IP}/company/` + id_company),
-  };
-};

@@ -1,7 +1,6 @@
-/* eslint-disable no-undef */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, TextInput, Image} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {
   Container,
   Button,
@@ -9,7 +8,6 @@ import {
   Left,
   Body,
   Right,
-  Item,
   Title,
   Card,
   CardItem,
@@ -17,12 +15,12 @@ import {
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import styles from './style';
 
 import {connect} from 'react-redux';
-import {getOneCompany} from '../../../redux/action/company';
+import {getCompany} from '../../../redux/action/company';
 
 class Detail extends Component {
   constructor(props) {
@@ -34,12 +32,11 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    const id_company = this.props.navigation.getParam('id_company');
-    this.getData(id_company);
+    this.getData();
   }
 
-  getData = id_company => {
-    this.props.dispatch(getOneCompany(id_company));
+  getData = () => {
+    this.props.dispatch(getCompany());
   };
 
   render() {
@@ -66,7 +63,7 @@ class Detail extends Component {
                 name="edit"
                 color="#ffc400"
                 size={20}
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => alert('Coming soon.')}
               />
             </Button>
             <Button transparent>
@@ -74,7 +71,7 @@ class Detail extends Component {
                 name="trash"
                 color="#ff0000"
                 size={20}
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => alert('Coming soon.')}
               />
             </Button>
           </Right>

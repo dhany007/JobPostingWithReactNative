@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-undef */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
@@ -21,7 +22,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import styles from './style';
 
 import {connect} from 'react-redux';
-import {getJobId} from '../../../redux/action/job';
+import {getJob} from '../../../redux/action/job';
 
 class Detail extends Component {
   constructor(props) {
@@ -33,12 +34,11 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    const id_job = this.props.navigation.getParam('id_job');
-    this.getData(id_job);
+    this.getData();
   }
 
-  getData = id_job => {
-    this.props.dispatch(getJobId(id_job));
+  getData = () => {
+    this.props.dispatch(getJob());
   };
 
   render() {
@@ -65,7 +65,7 @@ class Detail extends Component {
                 name="edit"
                 color="#ffc400"
                 size={20}
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => alert('Coming soon.')}
               />
             </Button>
             <Button transparent>
@@ -73,7 +73,7 @@ class Detail extends Component {
                 name="trash"
                 color="#ff0000"
                 size={20}
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => alert('Coming soon.')}
               />
             </Button>
           </Right>

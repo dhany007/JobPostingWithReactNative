@@ -68,6 +68,9 @@ class Job extends Component {
         </View>
         <ScrollView>
           <View style={{backgroundColor: '#ffffff'}}>
+            <Text style={{marginTop: 15, marginBottom: 10, marginLeft: 20}}>
+              Found {this.props.job.totalData} Jobs
+            </Text>
             <View style={styles.card}>
               {this.props.job.data.map((v, i) => (
                 <TouchableOpacity

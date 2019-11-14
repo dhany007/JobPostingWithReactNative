@@ -8,10 +8,3 @@ export const getJob = () => {
     payload: axios.get(IP),
   };
 };
-
-export const getJobId = id_job => {
-  return {
-    type: 'GET_JOB',
-    payload: axios.get(`${IP}/` + id_job),
-  };
-};

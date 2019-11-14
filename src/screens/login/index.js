@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, Text, TextInput} from 'react-native';
@@ -41,12 +42,22 @@ class Login extends Component {
               <H2 style={styles.txtHeader}>Log in</H2>
             </View>
             <View style={styles.viewSosmed}>
-              <Button iconLeft primary style={styles.btnLogSosMed} rounded>
+              <Button
+                iconLeft
+                primary
+                style={styles.btnLogSosMed}
+                rounded
+                onPress={() => alert('Coming soon.')}>
                 <Icon name="facebook-f" color="#ffffff" size={20} />
                 <Text style={styles.txtLogSosMed}>Facebook</Text>
               </Button>
               <View style={{marginLeft: 10}} />
-              <Button iconRight danger style={styles.btnLogSosMed} rounded>
+              <Button
+                iconRight
+                danger
+                style={styles.btnLogSosMed}
+                rounded
+                onPress={() => alert('Coming soon.')}>
                 <Icon name="google" color="#ffffff" size={20} />
                 <Text style={styles.txtLogSosMed}>Google</Text>
               </Button>
