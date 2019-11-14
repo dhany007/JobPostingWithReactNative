@@ -41,7 +41,6 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
-    marginTop: 50,
   },
   txtTit: {
     fontWeight: 'bold',

@@ -12,6 +12,19 @@ import MenuTabs from './src/screens/tab';
 import Register from './src/screens/register';
 import Login from './src/screens/login';
 
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    );
+  }
+}
+
 const AppNavigator = createStackNavigator(
   {
     Starter: {screen: Starter},
@@ -27,5 +40,3 @@ const AppNavigator = createStackNavigator(
 );
 
 const AppContainer = createAppContainer(AppNavigator);
-
-export default AppContainer;

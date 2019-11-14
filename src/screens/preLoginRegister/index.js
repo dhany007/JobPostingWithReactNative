@@ -64,38 +64,40 @@ export default class PreLoginRegister extends Component {
   }
   render() {
     return (
-      <Container style={{marginLeft: 25, marginRight: 25}}>
-        <ScrollView>
-          <SafeAreaView style={styles.carouselPage}>
-            <Carousel
-              ref={ref => (this.carousel = ref)}
-              data={this.state.carouselItems}
-              sliderWidth={250}
-              itemWidth={250}
-              renderItem={this._renderItem}
-              onSnapToItem={index => this.setState({activeSlide: index})}
-            />
-            {this.pagination}
-          </SafeAreaView>
-          <View>
-            <Button
-              style={styles.btnLogin}
-              onPress={() => this.props.navigation.navigate('Login')}
-              rounded
-              block>
-              <Text style={styles.txtLogin}>Log in</Text>
-            </Button>
-          </View>
-          <View>
-            <Button
-              style={styles.btnRegister}
-              onPress={() => this.props.navigation.navigate('Register')}
-              rounded
-              block>
-              <Text style={styles.txtRegister}>Create Account</Text>
-            </Button>
-          </View>
-        </ScrollView>
+      <Container style={{marginLeft: 25, marginRight: 25, marginTop: 40}}>
+        <SafeAreaView>
+          <ScrollView>
+            <View style={styles.carouselPage}>
+              <Carousel
+                ref={ref => (this.carousel = ref)}
+                data={this.state.carouselItems}
+                sliderWidth={250}
+                itemWidth={250}
+                renderItem={this._renderItem}
+                onSnapToItem={index => this.setState({activeSlide: index})}
+              />
+              {this.pagination}
+            </View>
+            <View>
+              <Button
+                style={styles.btnLogin}
+                onPress={() => this.props.navigation.navigate('Login')}
+                rounded
+                block>
+                <Text style={styles.txtLogin}>Log in</Text>
+              </Button>
+            </View>
+            <View>
+              <Button
+                style={styles.btnRegister}
+                onPress={() => this.props.navigation.navigate('Register')}
+                rounded
+                block>
+                <Text style={styles.txtRegister}>Create Account</Text>
+              </Button>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </Container>
     );
   }
