@@ -1,6 +1,7 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Alert} from 'react-native';
 import {
   Container,
   Button,
@@ -14,32 +15,44 @@ import {
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import styles from './style';
 
 import {connect} from 'react-redux';
-import {getCategory} from '../../../redux/action/category';
+import {getCategory, deleteCategory} from '../../../redux/action/category';
 
 class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
+      data: this.props.category.data,
     };
   }
   componentDidMount() {
     this.getData();
   }
+
   getData = async () => {
     await this.props.dispatch(getCategory());
   };
-  goToDetail = id_category => {
-    this.props.navigation.navigate('Detail', {id_category});
+  deleteCategory = id_category => {
+    Alert.alert('Delete', 'Are you sure ?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+      },
+      {
+        text: 'Ok',
+        onPress: () => {
+          this.props.dispatch(deleteCategory(id_category));
+          this.forceUpdate();
+        },
+      },
+    ]);
   };
 
   render() {
-    console.log(this.props.data);
     return (
       <Container style={{backgroundColor: '#ffffff'}}>
         <Header noLeft style={styles.header}>
@@ -55,9 +68,9 @@ class Category extends Component {
               Found {this.props.category.totalData} Categories
             </Text>
             <View style={styles.card}>
-              {this.props.category.data.map((v, i) => (
+              {this.props.category.data.map(v => (
                 <Card>
-                  <CardItem key={i.toString()}>
+                  <CardItem key={v.id_category.toString()}>
                     <Left>
                       <Text style={styles.txtCompanyTitle}>
                         {v.name_category}>
@@ -78,7 +91,7 @@ class Category extends Component {
                             name="trash"
                             color="#ff0000"
                             size={20}
-                            onPress={() => alert('Coming soon.')}
+                            onPress={() => this.deleteCategory(v.id_category)}
                           />
                         </Button>
                       </View>

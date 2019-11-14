@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   GET_JOB_PENDING,
   GET_JOB_FULFILLED,
@@ -47,6 +46,24 @@ const job = (state = initialState, action) => {
         isLoading: false,
         isError: true,
       };
+    case ADD_JOB_PENDING:
+      return null;
+    case ADD_JOB_FULFILLED:
+      return null;
+    case ADD_JOB_REJECTED:
+      return null;
+    case UPDATE_JOB_PENDING:
+      return null;
+    case UPDATE_JOB_FULFILLED:
+      return null;
+    case UPDATE_JOB_REJECTED:
+      return null;
+    case DELETE_JOB_PENDING:
+      return null;
+    case DELETE_JOB_FULFILLED:
+      return null;
+    case DELETE_JOB_REJECTED:
+      return null;
     default:
       return state;
   }

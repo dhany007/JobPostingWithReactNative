@@ -1,5 +1,4 @@
 /* eslint-disable no-alert */
-/* eslint-disable no-undef */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {Text, View, Image} from 'react-native';

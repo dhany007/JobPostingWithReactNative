@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   GET_COMPANY_PENDING,
   GET_COMPANY_FULFILLED,
@@ -43,6 +42,24 @@ const company = (state = initialState, action) => {
         isLoading: false,
         isError: true,
       };
+    case ADD_COMPANY_PENDING:
+      return null;
+    case ADD_COMPANY_FULFILLED:
+      return null;
+    case ADD_COMPANY_REJECTED:
+      return null;
+    case UPDATE_COMPANY_PENDING:
+      return null;
+    case UPDATE_COMPANY_FULFILLED:
+      return null;
+    case UPDATE_COMPANY_REJECTED:
+      return null;
+    case DELETE_COMPANY_PENDING:
+      return null;
+    case DELETE_COMPANY_FULFILLED:
+      return null;
+    case DELETE_COMPANY_REJECTED:
+      return null;
     default:
       return state;
   }

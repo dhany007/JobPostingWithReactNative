@@ -8,3 +8,10 @@ export const getCategory = () => {
     payload: axios.get(IP),
   };
 };
+
+export const deleteCategory = id_category => {
+  return {
+    type: 'DELETE_CATEGORY',
+    payload: axios.delete(`${IP}/${id_category}`),
+  };
+};

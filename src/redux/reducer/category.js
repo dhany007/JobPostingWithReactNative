@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   GET_CATEGORY_PENDING,
   GET_CATEGORY_FULFILLED,
@@ -24,6 +23,7 @@ const initialState = {
 
 const category = (state = initialState, action) => {
   switch (action.type) {
+    // Get category
     case GET_CATEGORY_PENDING:
       return {
         ...state,
@@ -38,6 +38,40 @@ const category = (state = initialState, action) => {
         totalData: action.payload.data.info.count,
       };
     case GET_CATEGORY_REJECTED:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    // Add category
+    case ADD_CATEGORY_PENDING:
+      return null;
+    case ADD_CATEGORY_FULFILLED:
+      return null;
+    case ADD_CATEGORY_REJECTED:
+      return null;
+    // update category
+    case UPDATE_CATEGORY_PENDING:
+      return null;
+    case UPDATE_CATEGORY_FULFILLED:
+      return null;
+    case UPDATE_CATEGORY_REJECTED:
+      return null;
+    // delete category
+    case DELETE_CATEGORY_PENDING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case DELETE_CATEGORY_FULFILLED:
+      return {
+        ...state,
+        isLoading: false,
+        data: state.data.filter(
+          data => data.id_category !== action.payload.data.id_category,
+        ),
+      };
+    case DELETE_CATEGORY_REJECTED:
       return {
         ...state,
         isLoading: false,
