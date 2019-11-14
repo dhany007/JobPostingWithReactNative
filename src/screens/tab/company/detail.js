@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, Alert} from 'react-native';
 import {
   Container,
   Button,
@@ -16,18 +16,17 @@ import {
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 import styles from './style';
 
 import {connect} from 'react-redux';
-import {getCompany} from '../../../redux/action/company';
+import {getCompany, deleteCompany} from '../../../redux/action/company';
 
 class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
       id_company: props.navigation.getParam('id_company'),
     };
   }
@@ -38,6 +37,23 @@ class Detail extends Component {
 
   getData = () => {
     this.props.dispatch(getCompany());
+  };
+
+  deleteCompany = id_category => {
+    Alert.alert('Delete', 'Are you sure ?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+      },
+      {
+        text: 'Ok',
+        onPress: () => {
+          this.props.dispatch(deleteCompany(id_category));
+          this.forceUpdate();
+          this.props.navigation.navigate('Company');
+        },
+      },
+    ]);
   };
 
   render() {
@@ -59,22 +75,26 @@ class Detail extends Component {
             <Title style={styles.titleHeader}>Detail Company</Title>
           </Body>
           <Right>
-            <Button transparent>
-              <Icon
-                name="edit"
-                color="#ffc400"
-                size={20}
-                onPress={() => alert('Coming soon.')}
-              />
-            </Button>
-            <Button transparent>
-              <Icon
-                name="trash"
-                color="#ff0000"
-                size={20}
-                onPress={() => alert('Coming soon.')}
-              />
-            </Button>
+            <TouchableOpacity>
+              <Button transparent>
+                <Icon
+                  name="edit"
+                  color="#ffc400"
+                  size={20}
+                  onPress={() => alert('Coming soon.')}
+                />
+              </Button>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Button transparent>
+                <Icon
+                  name="trash"
+                  color="#ff0000"
+                  size={20}
+                  onPress={() => this.deleteCompany(this.state.id_company)}
+                />
+              </Button>
+            </TouchableOpacity>
           </Right>
         </Header>
         <ScrollView>

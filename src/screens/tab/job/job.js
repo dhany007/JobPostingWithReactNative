@@ -48,7 +48,15 @@ class Job extends Component {
           <Body>
             <Title style={styles.titleHeader}>Job</Title>
           </Body>
-          <Right />
+          <Right>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('AddJob')}>
+              <Button transparent>
+                <Icon name="plus-circle" color="#0000ff" size={25} />
+                <Text style={{marginLeft: 10}}>Add Job</Text>
+              </Button>
+            </TouchableOpacity>
+          </Right>
         </Header>
         <View>
           <View style={styles.search}>

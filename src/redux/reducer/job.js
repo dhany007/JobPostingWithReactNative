@@ -58,12 +58,26 @@ const job = (state = initialState, action) => {
       return null;
     case UPDATE_JOB_REJECTED:
       return null;
+    //delete
     case DELETE_JOB_PENDING:
-      return null;
+      return {
+        ...state,
+        isLoading: true,
+      };
     case DELETE_JOB_FULFILLED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        data: state.data.filter(
+          data => data.id_job !== action.payload.data.id_job,
+        ),
+      };
     case DELETE_JOB_REJECTED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
     default:
       return state;
   }

@@ -44,4 +44,35 @@ export default {
     width: 200,
     height: 200,
   },
+  inpName: {
+    backgroundColor: '#ffffff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  txtInput: {
+    paddingLeft: 20,
+  },
+  btnAdd: {
+    alignSelf: 'center',
+    backgroundColor: '#6FAF98',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+    elevation: 5,
+  },
+  txtAdd: {
+    textAlign: 'center',
+    color: '#ffffff',
+    fontSize: 17,
+  },
 };

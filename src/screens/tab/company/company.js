@@ -10,6 +10,7 @@ import {
   Title,
   Card,
   CardItem,
+  Button,
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -46,7 +47,15 @@ class Company extends Component {
           <Body>
             <Title style={styles.titleHeader}>Company</Title>
           </Body>
-          <Right />
+          <Right>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('AddCompany')}>
+              <Button transparent>
+                <Icon name="plus-circle" color="#0000ff" size={25} />
+                <Text style={{marginLeft: 10}}>Add Company</Text>
+              </Button>
+            </TouchableOpacity>
+          </Right>
         </Header>
         <ScrollView>
           <View style={{backgroundColor: '#ffffff'}}>

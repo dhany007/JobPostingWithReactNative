@@ -15,3 +15,10 @@ export const deleteCategory = id_category => {
     payload: axios.delete(`${IP}/${id_category}`),
   };
 };
+
+export const addCategory = data => {
+  return {
+    type: 'ADD_CATEGORY',
+    payload: axios.post(IP, data),
+  };
+};

@@ -15,7 +15,7 @@ import {
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 import styles from './style';
 
@@ -47,12 +47,14 @@ class Category extends Component {
         onPress: () => {
           this.props.dispatch(deleteCategory(id_category));
           this.forceUpdate();
+          this.props.navigation.navigate('Category');
         },
       },
     ]);
   };
 
   render() {
+    //const {data} = this.state;
     return (
       <Container style={{backgroundColor: '#ffffff'}}>
         <Header noLeft style={styles.header}>
@@ -60,7 +62,15 @@ class Category extends Component {
           <Body>
             <Title style={styles.titleHeader}>Category</Title>
           </Body>
-          <Right />
+          <Right>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('AddCategory')}>
+              <Button transparent>
+                <Icon name="plus-circle" color="#0000ff" size={25} />
+                <Text style={{marginLeft: 10}}>Add Category</Text>
+              </Button>
+            </TouchableOpacity>
+          </Right>
         </Header>
         <ScrollView>
           <View style={{backgroundColor: '#ffffff'}}>
@@ -68,32 +78,36 @@ class Category extends Component {
               Found {this.props.category.totalData} Categories
             </Text>
             <View style={styles.card}>
-              {this.props.category.data.map(v => (
+              {this.props.category.data.map((v, i) => (
                 <Card>
-                  <CardItem key={v.id_category.toString()}>
+                  <CardItem key={i.toString()}>
                     <Left>
                       <Text style={styles.txtCompanyTitle}>
-                        {v.name_category}>
+                        {v.name_category}
                       </Text>
                     </Left>
                     <Right>
                       <View style={{flex: 1, flexDirection: 'row'}}>
-                        <Button transparent style={{marginRight: 20}}>
-                          <Icon
-                            name="edit"
-                            color="#ffc400"
-                            size={20}
-                            onPress={() => alert('Coming soon.')}
-                          />
-                        </Button>
-                        <Button transparent>
-                          <Icon
-                            name="trash"
-                            color="#ff0000"
-                            size={20}
-                            onPress={() => this.deleteCategory(v.id_category)}
-                          />
-                        </Button>
+                        <TouchableOpacity>
+                          <Button transparent style={{marginRight: 20}}>
+                            <Icon
+                              name="edit"
+                              color="#ffc400"
+                              size={20}
+                              onPress={() => alert('Coming soon.')}
+                            />
+                          </Button>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                          <Button transparent>
+                            <Icon
+                              name="trash"
+                              color="#ff0000"
+                              size={20}
+                              onPress={() => this.deleteCategory(v.id_category)}
+                            />
+                          </Button>
+                        </TouchableOpacity>
                       </View>
                     </Right>
                   </CardItem>

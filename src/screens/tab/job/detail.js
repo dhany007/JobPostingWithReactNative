@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, Alert} from 'react-native';
 import {
   Container,
   Button,
@@ -16,12 +16,12 @@ import {
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 import styles from './style';
 
 import {connect} from 'react-redux';
-import {getJob} from '../../../redux/action/job';
+import {getJob, deleteJob} from '../../../redux/action/job';
 
 class Detail extends Component {
   constructor(props) {
@@ -38,6 +38,23 @@ class Detail extends Component {
 
   getData = () => {
     this.props.dispatch(getJob());
+  };
+
+  deleteJob = id_job => {
+    Alert.alert('Delete', 'Are you sure ?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+      },
+      {
+        text: 'Ok',
+        onPress: () => {
+          this.props.dispatch(deleteJob(id_job));
+          this.forceUpdate();
+          this.props.navigation.navigate('Job');
+        },
+      },
+    ]);
   };
 
   render() {
@@ -59,22 +76,26 @@ class Detail extends Component {
             <Title style={styles.titleHeader}>Detail Job</Title>
           </Body>
           <Right>
-            <Button transparent>
-              <Icon
-                name="edit"
-                color="#ffc400"
-                size={20}
-                onPress={() => alert('Coming soon.')}
-              />
-            </Button>
-            <Button transparent>
-              <Icon
-                name="trash"
-                color="#ff0000"
-                size={20}
-                onPress={() => alert('Coming soon.')}
-              />
-            </Button>
+            <TouchableOpacity>
+              <Button transparent>
+                <Icon
+                  name="edit"
+                  color="#ffc400"
+                  size={20}
+                  onPress={() => alert('Coming soon.')}
+                />
+              </Button>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Button transparent>
+                <Icon
+                  name="trash"
+                  color="#ff0000"
+                  size={20}
+                  onPress={() => this.deleteJob(this.state.id_job)}
+                />
+              </Button>
+            </TouchableOpacity>
           </Right>
         </Header>
         <ScrollView>

@@ -45,11 +45,22 @@ const category = (state = initialState, action) => {
       };
     // Add category
     case ADD_CATEGORY_PENDING:
-      return null;
+      return {
+        ...state,
+        isLoading: true,
+      };
     case ADD_CATEGORY_FULFILLED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        data: [...state.data, action.payload.data],
+      };
     case ADD_CATEGORY_REJECTED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
     // update category
     case UPDATE_CATEGORY_PENDING:
       return null;

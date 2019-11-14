@@ -54,12 +54,27 @@ const company = (state = initialState, action) => {
       return null;
     case UPDATE_COMPANY_REJECTED:
       return null;
+
+    // delete company
     case DELETE_COMPANY_PENDING:
-      return null;
+      return {
+        ...state,
+        isLoading: true,
+      };
     case DELETE_COMPANY_FULFILLED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        data: state.data.filter(
+          data => data.id_company !== action.payload.data.id_company,
+        ),
+      };
     case DELETE_COMPANY_REJECTED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
     default:
       return state;
   }

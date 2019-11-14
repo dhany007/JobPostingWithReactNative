@@ -8,3 +8,10 @@ export const getCompany = () => {
     payload: axios.get(IP),
   };
 };
+
+export const deleteCompany = id_company => {
+  return {
+    type: 'DELETE_COMPANY',
+    payload: axios.delete(`${IP}/${id_company}`),
+  };
+};
