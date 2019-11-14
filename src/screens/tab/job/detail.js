@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, TextInput, Image} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {
   Container,
   Button,
@@ -9,7 +9,6 @@ import {
   Left,
   Body,
   Right,
-  Item,
   Title,
   Card,
   CardItem,
@@ -17,7 +16,7 @@ import {
 } from 'native-base';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import styles from './style';
 
@@ -155,7 +154,13 @@ class Detail extends Component {
                                   />
                                 </View>
                                 <View>
-                                  <Text>{v.salary}</Text>
+                                  <Text>
+                                    {v.salary.toLocaleString('IDR-ID', {
+                                      style: 'currency',
+                                      currency: 'IDR',
+                                      maximumSignificantDigits: 1,
+                                    })}
+                                  </Text>
                                 </View>
                               </View>
                             </View>

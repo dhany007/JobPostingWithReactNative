@@ -80,7 +80,7 @@ class Job extends Component {
                           source={{uri: v.logo}}
                           style={{height: 50, width: 50}}
                         />
-                        <View style={{marginLeft: 20, padding: 5}}>
+                        <View style={{marginLeft: 10, padding: 5}}>
                           <Text style={styles.txtJobTitle}>{v.name_job}</Text>
                           <View style={{flexDirection: 'row'}}>
                             <View style={{width: 20, justifyContent: 'center'}}>
@@ -111,7 +111,13 @@ class Job extends Component {
                               />
                             </View>
                             <View>
-                              <Text>{v.salary}</Text>
+                              <Text>
+                                {v.salary.toLocaleString('IDR-ID', {
+                                  style: 'currency',
+                                  currency: 'IDR',
+                                  maximumSignificantDigits: 1,
+                                })}
+                              </Text>
                             </View>
                           </View>
                           <View style={{flexDirection: 'row'}}>
