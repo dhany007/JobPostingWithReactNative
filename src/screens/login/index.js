@@ -18,8 +18,42 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './style';
 import {ScrollView} from 'react-native-gesture-handler';
 
+import {connect} from 'react-redux';
+import {loginUser} from '../../redux/action/user';
+
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      success: false,
+      message: '',
+    };
+  }
+
+  loginUser = async () => {
+    const email = this.state.email;
+    console.log(this.email);
+    const password = this.state.password;
+    console.log(this.password);
+    // await this.props
+    //   .dispatch(loginUser(email, password))
+    //   .then(res => {
+    //     console.log(res);
+    //     this.setState = {
+    //       success: this.props.data.success,
+    //       message: this.props.data.message,
+    //     };
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  };
+
   render() {
+    console.log(this.email);
+    console.log(this.password);
     return (
       <Container style={{backgroundColor: '#f0f0f0'}}>
         <ScrollView>
@@ -67,7 +101,14 @@ class Login extends Component {
             </View>
             <View>
               <Item style={styles.inpLogin} rounded>
-                <TextInput style={styles.txtInput} placeholder="Email" />
+                <TextInput
+                  style={styles.txtInput}
+                  placeholder="Enter email"
+                  value={this.state.name_job}
+                  onChangeText={email =>
+                    this.setState({email})
+                  }
+                />
               </Item>
               <View style={{marginBottom: 10}} />
               <Item style={styles.inpLogin} rounded>
@@ -75,6 +116,9 @@ class Login extends Component {
                   secureTextEntry={true}
                   style={styles.txtInput}
                   placeholder="Password"
+                  onChangeText={ password =>
+                    this.setState({password})
+                  }
                 />
               </Item>
             </View>
@@ -85,6 +129,7 @@ class Login extends Component {
               <Button
                 style={styles.btnLogin}
                 onPress={() => this.props.navigation.navigate('MenuTabs')}
+                //onPress={() => this.loginUser()}
                 rounded
                 block>
                 <Text style={styles.txtLogin}>Log in</Text>
@@ -108,4 +153,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(Login);

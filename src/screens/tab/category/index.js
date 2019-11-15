@@ -7,7 +7,7 @@ export default createStackNavigator(
   {
     Category,
     AddCategory,
-    EditCategory
+    EditCategory,
   },
   {
     headerMode: 'none',

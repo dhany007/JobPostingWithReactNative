@@ -46,18 +46,47 @@ const job = (state = initialState, action) => {
         isLoading: false,
         isError: true,
       };
+    // add job
     case ADD_JOB_PENDING:
-      return null;
+      return {
+        ...state,
+        isLoading: true,
+      };
     case ADD_JOB_FULFILLED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        data: [...state.data, action.payload.data],
+      };
     case ADD_JOB_REJECTED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    // update category
     case UPDATE_JOB_PENDING:
-      return null;
+      return {
+        ...state,
+        isLoading: true,
+      };
     case UPDATE_JOB_FULFILLED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        isFinish: true,
+        data: state.notes.map(
+          data =>
+            (data.id = action.payload.data.id_job ? action.payload.data : data),
+        ),
+      };
     case UPDATE_JOB_REJECTED:
-      return null;
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+
     //delete
     case DELETE_JOB_PENDING:
       return {

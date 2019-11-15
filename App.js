@@ -34,7 +34,7 @@ const AppNavigator = createStackNavigator(
     Register: {screen: Register},
   },
   {
-    initialRouteName: 'MenuTabs',
+    initialRouteName: 'Starter',
     headerMode: 'none',
   },
 );

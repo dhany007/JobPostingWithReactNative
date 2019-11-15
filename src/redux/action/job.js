@@ -15,3 +15,17 @@ export const deleteJob = id_job => {
     payload: axios.delete(`${IP}/${id_job}`),
   };
 };
+
+export const addJob = data => {
+  return {
+    type: 'ADD_JOB',
+    payload: axios.post(IP, data),
+  };
+};
+
+export const updatedJob = (id_job, data) => {
+  return {
+    type: 'UPDATE_JOB',
+    payload: axios.patch(`${IP}/${id_job}`, data),
+  };
+};

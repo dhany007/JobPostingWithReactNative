@@ -82,7 +82,7 @@ class Detail extends Component {
                   name="edit"
                   color="#ffc400"
                   size={20}
-                  onPress={() => alert('Coming soon.')}
+                  onPress={() => this.props.navigation.navigate('EditJob')}
                 />
               </Button>
             </TouchableOpacity>

@@ -22,23 +22,23 @@ import styles from './style';
 
 import {connect} from 'react-redux';
 
-import {getCategory} from './../../../redux/action/category';
-import {getCompany} from './../../../redux/action/company';
-import {addJob, updatedJob} from './../../../redux/action/job';
+import {getCategory} from '../../../redux/action/category';
+import {getCompany} from '../../../redux/action/company';
+import {addJob} from '../../../redux/action/job';
 
-class AddJob extends Component {
+class EditJob extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name_job: '',
-      description_job: '',
-      category: '',
-      salary: '',
-      location_job: '',
-      company: '',
+      name_job: props.job.name_job,
+      description_job: props.job.description_job,
+      category: props.job.category,
+      salary: props.job.salary,
+      location_job: props.job.location_job,
+      company: props.job.company,
     };
   }
-  addNewJob = () => {
+  updateJob = () => {
     const name_job = this.state.name_job;
     const description_job = this.state.description_job;
     const category = this.state.category;
@@ -54,7 +54,7 @@ class AddJob extends Component {
       location_job,
       company,
     };
-    Alert.alert('Add Job', 'Successfull added new Job', [
+    Alert.alert('Update Job', 'Successfull updated a job', [
       {
         text: 'Ok',
         onPress: () => {
@@ -91,7 +91,7 @@ class AddJob extends Component {
             </Button>
           </Left>
           <Body>
-            <Title style={styles.titleHeader}>Add Job</Title>
+            <Title style={styles.titleHeader}>Edit Job</Title>
           </Body>
           <Right />
         </Header>
@@ -157,7 +157,7 @@ class AddJob extends Component {
             <View style={{marginTop: 20}}>
               <Button
                 style={styles.btnAdd}
-                onPress={() => this.addNewJob()}
+                onPress={() => this.updateJob()}
                 rounded
                 block>
                 <Text style={styles.txtAdd}>Add</Text>
@@ -176,4 +176,4 @@ const mapStateToProps = state => ({
   company: state.company,
 });
 
-export default connect(mapStateToProps)(AddJob);
+export default connect(mapStateToProps)(EditJob);
