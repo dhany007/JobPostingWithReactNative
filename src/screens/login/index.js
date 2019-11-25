@@ -37,23 +37,28 @@ class Login extends Component {
     console.log(this.email);
     const password = this.state.password;
     console.log(this.password);
-    // await this.props
-    //   .dispatch(loginUser(email, password))
-    //   .then(res => {
-    //     console.log(res);
-    //     this.setState = {
-    //       success: this.props.data.success,
-    //       message: this.props.data.message,
-    //     };
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    const data = {
+      email,
+      password,
+    };
+    await this.props
+      .dispatch(loginUser(data))
+      .then(res => {
+        console.log(res);
+        this.setState = {
+          success: this.props.user.data.success,
+          message: this.props.user.data.message,
+        };
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
-    console.log(this.email);
-    console.log(this.password);
+    console.log(this.props.user.data);
+    console.log(this.state.email);
+    console.log(this.state.password);
     return (
       <Container style={{backgroundColor: '#f0f0f0'}}>
         <ScrollView>
@@ -104,10 +109,7 @@ class Login extends Component {
                 <TextInput
                   style={styles.txtInput}
                   placeholder="Enter email"
-                  value={this.state.name_job}
-                  onChangeText={email =>
-                    this.setState({email})
-                  }
+                  onChangeText={email => this.setState({email})}
                 />
               </Item>
               <View style={{marginBottom: 10}} />
@@ -116,9 +118,7 @@ class Login extends Component {
                   secureTextEntry={true}
                   style={styles.txtInput}
                   placeholder="Password"
-                  onChangeText={ password =>
-                    this.setState({password})
-                  }
+                  onChangeText={password => this.setState({password})}
                 />
               </Item>
             </View>
@@ -128,12 +128,21 @@ class Login extends Component {
             <View>
               <Button
                 style={styles.btnLogin}
-                onPress={() => this.props.navigation.navigate('MenuTabs')}
-                //onPress={() => this.loginUser()}
+                //onPress={() => this.props.navigation.navigate('MenuTabs')}
+                onPress={() => this.loginUser()}
                 rounded
                 block>
                 <Text style={styles.txtLogin}>Log in</Text>
               </Button>
+            </View>
+            <View>
+              {this.props.user.data.success ? (
+                this.props.navigation.navigate('MenuTabs')
+              ) : (
+                <Text style={{color: '#ff0000', textAlign: 'center'}}>
+                  {this.props.user.data.message}
+                </Text>
+              )}
             </View>
             <View>
               <Text style={styles.linkSignup}>

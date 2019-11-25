@@ -29,6 +29,7 @@ class Job extends Component {
       search: '',
     };
   }
+
   componentDidMount() {
     this.getData();
   }

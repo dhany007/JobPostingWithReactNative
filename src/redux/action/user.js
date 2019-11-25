@@ -1,10 +1,10 @@
-import  axios from 'axios';
+import axios from 'axios';
 
 const IP = 'http://localhost:3001/auth/login';
 
-export const loginUser = (email, password) => {
+export const loginUser = data => {
   return {
     type: 'GET_USER',
-    payload: axios.post(IP, email, password),
+    payload: axios.post(IP, data),
   };
 };
