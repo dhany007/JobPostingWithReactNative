@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const IP = 'http://localhost:3001';
+const IP = 'https://freejobpost.site/job';
 
 export const getJob = () => {
   return {

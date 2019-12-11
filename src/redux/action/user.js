@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const IP = 'http://localhost:3001/auth/login';
+const IP = 'https://freejobpost.site/auth/login';
 
 export const loginUser = data => {
   return {

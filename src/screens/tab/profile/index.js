@@ -9,7 +9,7 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 import styles from './style';
 
-const userImage = require('../../../../assets/user.png');
+const userImage = require('../../../../assets/userImg.png');
 
 class Profile extends Component {
   render() {
