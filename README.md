@@ -14,16 +14,14 @@ Job Posting App Mobile with React Native and Redux. For Web version (https://fre
 2. Install depedencies
 
 ```bash
-# with npm
-$ npm install 
-
-# with yarn
+# install depedencies with yarn
 $ yarn install
 ```
 
 3. Start React App
 
 ```bash
+$ react-native run-android # build app
 $ yarn start # start app
 ```
 ## UI
