@@ -29,15 +29,15 @@ $ yarn start # start app
 ## UI
 - [x] Flash Screen:
 
-![flashScreen](/src/assets/1.png)
+![flashScreen](/assets/1.png)
 
 - [x] List Jobs:
 
-![listjob](/src/assets/3.png)
+![listjob](/assets/3.png)
 
 - [x] User Login:
 
-![login](/src/assets/2.png)
+![login](/assets/2.png)
 
 ## API
 The API I used on this app, you can clone it here https://github.com/dhany007/job-posting-restful-api-with-nodejs-expressjs
